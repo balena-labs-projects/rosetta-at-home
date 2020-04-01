@@ -1,0 +1,11 @@
+FROM balenalib/%%BALENA_MACHINE_NAME%%
+
+WORKDIR /usr/app
+
+RUN install_packages boinc-client boinctui htop
+  
+COPY *.xml ./
+
+COPY gui_rpc_auth.cfg ./
+
+CMD ["boinc","--allow_remote_gui_rpc"]

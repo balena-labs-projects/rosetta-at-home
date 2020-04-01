@@ -1,6 +1,7 @@
 FROM balenalib/%%BALENA_MACHINE_NAME%%
 
 WORKDIR /usr/app
+RUN mkdir locale
 
 RUN install_packages boinc-client boinctui htop
   

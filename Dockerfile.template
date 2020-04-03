@@ -9,4 +9,6 @@ COPY *.xml ./
 
 COPY gui_rpc_auth.cfg ./
 
-CMD ["boinc","--allow_remote_gui_rpc"]
+COPY start.sh ./
+
+CMD ["/bin/bash","/usr/app/start.sh"]

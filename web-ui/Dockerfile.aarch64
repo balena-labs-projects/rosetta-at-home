@@ -1,0 +1,11 @@
+FROM balenalib/%%BALENA_MACHINE_NAME%%
+
+WORKDIR /usr/app
+
+RUN install_packages boinctui
+RUN curl -LO https://github.com/yudai/gotty/releases/download/v1.0.1/gotty_linux_arm.tar.gz
+RUN tar xfzv gotty_linux_arm.tar.gz
+
+COPY boinctui.cfg /root/.boinctui.cfg
+
+CMD ["/usr/app/gotty","-w","-p","80","boinctui"]

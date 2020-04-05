@@ -38,7 +38,7 @@ By default, your device will contribute work units to the [balena team](https://
 
 ## FAQ
 
-* You can start the cli-based UI by running `boinctui` within a terminal to the `main` container.
+* You can start the cli-based UI by running `boinctui` within a terminal to the `boinc-client` container.
 
 * If you are not receiving work units, in `boinctui` try pressing F9 -> rosetta -> update.
 

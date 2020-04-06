@@ -34,7 +34,7 @@ For further information, see the [balenaCloud documentation](https://www.balena.
 
 ### Check the status
 
-This project has a built in web interface that allows you to see statistics and more. Simply visit the local IP address of your device, or enable the public URL for your device in the balenaCloud dashboard and you'll be able to access statistics from anywhere!
+This project has a built in web interface that allows you to see statistics and more. Simply visit the local IP address of your device or [enable the public URL for your device](https://www.balena.io/docs/learn/manage/actions/#enable-public-device-url) in the balenaCloud dashboard and you'll be able to access statistics from anywhere!
 
 ![web-ui](https://raw.githubusercontent.com/balenalabs/rosetta-at-home/master/images/web-ui.png)
 

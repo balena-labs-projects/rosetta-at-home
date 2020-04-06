@@ -10,6 +10,7 @@ This project should run on all 64-bit OS devices with 2 or more GB of RAM, but w
 * Raspberry Pi 4 (4GB RAM)
 * NVIDIA Jetson Nano
 * Intel NUC (and other generic x86_64 devices)
+* Most Intel-based laptops & desktops with a wired ethernet connection
 
 ## Getting started
 
@@ -31,6 +32,14 @@ This is a containerized application intended to run on [balenaCloud](https://www
 * The application will then be downloaded and started by each device in your fleet.
 
 For further information, see the [balenaCloud documentation](https://www.balena.io/docs/learn/getting-started/jetson-nano/nodejs/).
+
+### Check the status
+
+This project has a built in web interface that allows you to see statistics and more. Simply visit the local IP address of your device or [enable the public URL for your device](https://www.balena.io/docs/learn/manage/actions/#enable-public-device-url) in the balenaCloud dashboard and you'll be able to access statistics from anywhere!
+
+![web-ui](https://raw.githubusercontent.com/balenalabs/rosetta-at-home/master/images/web-ui.png)
+
+The web interface uses [GoTTY](https://github.com/yudai/gotty) to provide access to `boinctui` via a standard web browser.
 
 ## Customization
 

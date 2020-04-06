@@ -32,6 +32,14 @@ This is a containerized application intended to run on [balenaCloud](https://www
 
 For further information, see the [balenaCloud documentation](https://www.balena.io/docs/learn/getting-started/jetson-nano/nodejs/).
 
+### Check the status
+
+This project has a built in web interface that allows you to see statistics and more. Simply visit the local IP address of your device, or enable the public URL for your device in the balenaCloud dashboard and you'll be able to access statistics from anywhere!
+
+![web-ui](https://raw.githubusercontent.com/balenalabs/rosetta-at-home/master/images/web-ui.png)
+
+The web interface uses [GoTTY](https://github.com/yudai/gotty) to provide access to `boinctui` via a standard web browser.
+
 ## Customization
 
 By default, your device will contribute work units to the [balena team](https://boinc.bakerlab.org/rosetta/team_display.php?teamid=18832). To override this and contribue to a team of your choosing, you can set your account authentication key by using the [environment variable](https://www.balena.io/docs/learn/manage/serv-vars/) `ACCOUNT_KEY`, set from the balenaCloud dashboard. This will automatically update the XML configuration file with your key and ensure you're credited for completed work units.

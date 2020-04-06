@@ -10,6 +10,7 @@ This project should run on all 64-bit OS devices with 2 or more GB of RAM, but w
 * Raspberry Pi 4 (4GB RAM)
 * NVIDIA Jetson Nano
 * Intel NUC (and other generic x86_64 devices)
+* Most Intel-based laptops & desktops with a wired ethernet connection
 
 ## Getting started
 

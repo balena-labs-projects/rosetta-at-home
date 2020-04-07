@@ -1,0 +1,3 @@
+FROM scratch
+# copy script to create a minimal image
+COPY start.sh .

@@ -1,0 +1,11 @@
+FROM balenalib/%%BALENA_ARCH%%-debian-python
+
+WORKDIR /usr/src/app
+
+RUN install_packages python3-dbus
+
+COPY start.sh ./
+RUN chmod u+x start.sh 
+COPY *.py ./
+
+CMD ["/usr/src/app/start.sh"]

@@ -1,11 +1,13 @@
-FROM balenalib/%%BALENA_ARCH%%-debian-python
+FROM balenalib/%%BALENA_ARCH%%-debian-golang as builder
 
 WORKDIR /usr/src/app
 
-RUN install_packages python3-dbus
+RUN go get github.com/godbus/dbus
 
-COPY start.sh ./
-RUN chmod u+x start.sh 
-COPY *.py ./
+COPY main.go ./
 
-CMD ["/usr/src/app/start.sh"]
+RUN go build -ldflags "-linkmode external -extldflags -static" -a main.go
+
+FROM scratch
+COPY --from=builder /usr/src/app/main /main
+CMD ["/main"]

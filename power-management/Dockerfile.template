@@ -1,0 +1,11 @@
+FROM balenalib/%%BALENA_MACHINE_NAME%%-debian-golang as builder
+
+WORKDIR /usr/src/app
+
+COPY arm-noop.go ./main.go
+
+RUN go build -ldflags "-linkmode external -extldflags -static" -a main.go
+
+FROM scratch
+COPY --from=builder /usr/src/app/main /main
+CMD ["/main"]

@@ -5,9 +5,10 @@ services:
     restart: always
     ports:
       - 31416:31416
-  web-ui:
-    build: ./web-ui
+  ui:
+    build: ./ui
     restart: always
+    privileged: true
     ports:
       - 80:80
   power-management:

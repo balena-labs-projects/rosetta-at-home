@@ -1,0 +1,10 @@
+<cc_config>
+  <log_flags>
+    <task>1</task>
+    <file_xfer>1</file_xfer>
+    <sched_ops>1</sched_ops>
+</log_flags>
+<options>
+  <alt_platform>aarch64-unknown-linux-gnu</alt_platform>
+</options>
+</cc_config>

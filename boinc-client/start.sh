@@ -6,4 +6,4 @@ else
   sed -i -e 's|<authenticator>[0-9a-z_]\{1,\}</authenticator>|<authenticator>'"$ACCOUNT_KEY"'</authenticator>|g' /usr/app/account_boinc.rosetta.bakerlab.org.xml
 fi
 
-exec boinc --allow_remote_gui_rpc
+exec boinc --allow_remote_gui_rpc --fetch_minimal_work

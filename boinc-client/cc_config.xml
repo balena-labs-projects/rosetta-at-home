@@ -1,0 +1,5 @@
+<cc_config>
+    <options>
+        <alt_platform>aarch64-unknown-linux-gnu</alt_platform>
+    </options>
+</cc_config>

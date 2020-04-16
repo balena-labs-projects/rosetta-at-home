@@ -1,16 +1,18 @@
-# Rosetta@home - help in the fight against COVID-19
+# Fold for Covid - help in the fight against COVID-19 with Rosetta@home
 
 With the recent COVID-19 outbreak, R@h has been used to predict the structure of proteins important to the disease as well as to produce new, stable mini-proteins to be used as potential therapeutics and diagnostics, like the one displayed above which is bound to part of the COVID-19 spike protein. [Read more](http://boinc.bakerlab.org/rosetta/)
 
-This project has been built to get you up and running with as many devices as possible for the least effort.
+This project has been built to get you up and running with as many devices as possible for the least effort. If you want to deploy and run this project manually, read on, if you want to add your devices to the global fleet, head on over to [foldforcovid.io](https://foldforcovid.io)
 
 ## Hardware compatibility
-This project should run on all 64-bit OS devices with 2 or more GB of RAM, but we've tested on the below:
-* Raspberry Pi 4 (2GB RAM) **Note:** GPU memory allocation must be set to 16MB within device configuration
+This project should run on 64-bit OS devices with 1 or more GB of RAM, but we've tested on the below:
+* Raspberry Pi 3 (1GB RAM)
+* Raspberry Pi 4 (1GB RAM)
+* Raspberry Pi 4 (2GB RAM)
 * Raspberry Pi 4 (4GB RAM)
 * NVIDIA Jetson Nano
 * Intel NUC (and other generic x86_64 devices)
-* Most Intel-based laptops & desktops with a wired ethernet connection
+* Most Intel-based laptops & desktops with a wired ethernet connection should also work OK
 
 ## Getting started
 

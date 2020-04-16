@@ -45,7 +45,7 @@ The web interface uses [GoTTY](https://github.com/yudai/gotty) to provide access
 
 ## Customization
 
-By default, your device will contribute work units to the [balena team](https://boinc.bakerlab.org/rosetta/team_display.php?teamid=18832). To override this and contribue to a team of your choosing, you can set your account authentication key by using the [environment variable](https://www.balena.io/docs/learn/manage/serv-vars/) `ACCOUNT_KEY`, set from the balenaCloud dashboard. This will automatically update the XML configuration file with your key and ensure you're credited for completed work units.
+By default, your device will contribute work units to the [Fold for Covid team](https://boinc.bakerlab.org/rosetta/team_display.php?teamid=18832). To override this and contribue to a team of your choosing, you can set your account authentication key by using the [environment variable](https://www.balena.io/docs/learn/manage/serv-vars/) `ACCOUNT_KEY`, set from the balenaCloud dashboard. This will automatically update the XML configuration file with your key and ensure you're credited for completed work units.
 
 ## FAQ
 

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fold For Covid @ <%= deviceName %></title>
+  <link rel="stylesheet" href="views/style.css" />
+</head>
+
+<body>
+  <nav>
+    <form method="post">
+      <button type="submit" formaction="/manage/shutdown">
+        Shutdown
+      </button>
+      <button type="submit" formaction="/manage/reboot">
+        Reboot
+      </button>
+      <div class="envvar">
+        <label>ACCOUNT_KEY<label>
+            <details>
+              <summary>Change Account Key</summary>
+              <input type="text" name="accountKey" />
+              <button type="submit" formaction="/manage/setkey">Apply</button>
+            </details>
+      </div>
+    </form>
+  </nav>
+  <iframe id="tty" width="100%" height="90%" frameborder="0"
+    onload="if(document.getElementById('tty').src == '') { document.getElementById('tty').src = window.location.protocol + '//' + window.location.hostname + ':8080/'; }"></iframe>
+
+  <script></script>
+</body>
+
+</html>

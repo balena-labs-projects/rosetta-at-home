@@ -1,0 +1,38 @@
+body {
+  height: 100vh;
+  margin: 0;
+  color: white;
+  font-family: monospace;
+}
+
+nav {
+  height: 10%;
+  background-color: rgb(51, 51, 51);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+}
+button {
+  box-sizing: border-box;
+  cursor: pointer;
+  text-transform: none;
+  color: rgb(248, 248, 248);
+  outline: none;
+  text-decoration: none;
+  margin: 0px;
+  overflow: visible;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(82, 118, 153);
+  border-image: initial;
+  padding: 4px 20px;
+  background: rgb(82, 118, 153);
+  border-radius: 20px;
+}

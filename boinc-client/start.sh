@@ -1,4 +1,7 @@
 #!/bin/bash
+mkdir -p /usr/app/boinc/locale
+mkdir -p /usr/app/boinc/slots
+
 if [[ -z $ACCOUNT_KEY ]]; then
   echo 'Account key undefined - using balena key'
 else
@@ -10,7 +13,7 @@ totalmem=$(awk '/^MemTotal:/{print $2}' /proc/meminfo)
 
 if [ "$totalmem" -lt "2500000" ]; then
   echo "Less than 2.5GB RAM - running single concurrent task"
-  exec boinc --allow_remote_gui_rpc --fetch_minimal_work
+  exec boinc --dir /usr/app/boinc/ --allow_remote_gui_rpc --fetch_minimal_work
 else
-  exec boinc --allow_remote_gui_rpc
+  exec boinc --dir /usr/app/boinc/ --allow_remote_gui_rpc
 fi

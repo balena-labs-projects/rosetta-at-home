@@ -1,10 +1,14 @@
 version: '2'
+volumes:
+  boinc:
 services:
   boinc-client:
     build: ./boinc-client
     restart: always
     ports:
       - 31416:31416
+    volumes:
+      - 'boinc:/usr/app/boinc'
   ui:
     build: ./ui
     restart: always

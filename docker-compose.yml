@@ -9,7 +9,8 @@ services:
       - 31416:31416
     volumes:
       - 'boinc:/usr/app/boinc'
-    privileged: true
+    labels:
+      io.balena.features.sysfs: '1'
   ui:
     build: ./ui
     restart: always

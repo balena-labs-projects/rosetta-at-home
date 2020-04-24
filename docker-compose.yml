@@ -9,6 +9,7 @@ services:
       - 31416:31416
     volumes:
       - 'boinc:/usr/app/boinc'
+    privileged: true
   ui:
     build: ./ui
     restart: always

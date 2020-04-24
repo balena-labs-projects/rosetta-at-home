@@ -11,9 +11,9 @@ fi
 
 totalmem=$(awk '/^MemTotal:/{print $2}' /proc/meminfo)
 
-if [ "$totalmem" -lt "2500000" ]; then
-  echo "Less than 2.5GB RAM - running single concurrent task"
-  exec boinc --dir /usr/app/boinc/ --allow_remote_gui_rpc --fetch_minimal_work
-else
-  exec boinc --dir /usr/app/boinc/ --allow_remote_gui_rpc
+if [ "$totalmem" -lt "1500000" ]; then
+  echo "Less than 1.5GB RAM - running single concurrent task"
+  sed -i -e 's|<max_ncpus_pct>[0-9a-z.]\{1,\}</max_ncpus_pct>|<max_ncpus_pct>25.000000</max_ncpus_pct>|g' /usr/app/boinc/global_prefs_override.xml
 fi
+
+exec boinc --dir /usr/app/boinc/ --allow_remote_gui_rpc

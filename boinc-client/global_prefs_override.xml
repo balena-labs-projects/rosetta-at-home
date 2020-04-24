@@ -1,6 +1,6 @@
 <global_preferences>
    <max_ncpus_pct>100.000000</max_ncpus_pct>
-   <ram_max_used_busy_pct>100.000000</ram_max_used_busy_pct>
-   <ram_max_used_idle_pct>100.000000</ram_max_used_idle_pct>
+   <ram_max_used_busy_pct>95.000000</ram_max_used_busy_pct>
+   <ram_max_used_idle_pct>95.000000</ram_max_used_idle_pct>
    <cpu_usage_limit>100.000000</cpu_usage_limit>
 </global_preferences>

@@ -12,13 +12,15 @@ validate_ram_settings() {
   local cfg_ram_max_busy=$(get_int_xml_val "$cfg_ram_max_busy_xml_key" "$prefs_file_path")
   local cfg_ram_max_idle=$(get_int_xml_val "$cfg_ram_max_busy_xml_key" "$prefs_file_path")
 
+  echo "Validating boinc RAM settings"
+
   if [[ ! -z $cfg_ram_max_busy && $cfg_ram_max_busy -gt $treshold_ram_settings_pct ]]; then
     echo "  max RAM when busy (${cfg_ram_max_busy}%) too high - setting to ${treshold_ram_settings_pct}%"
     update_float_xml_val_with_int "$cfg_ram_max_busy_xml_key" "$treshold_ram_settings_pct" "$prefs_file_path"
   fi
 
   if [[ ! -z $cfg_ram_max_idle && $cfg_ram_max_idle -gt $treshold_ram_settings_pct ]]; then
-    echo "  max RAM when busy (${cfg_ram_max_idle}%) too high - setting to ${treshold_ram_settings_pct}%"
+    echo "  max RAM when idle (${cfg_ram_max_idle}%) too high - setting to ${treshold_ram_settings_pct}%"
     update_float_xml_val_with_int "$cfg_ram_max_idle_xml_key" "$treshold_ram_settings_pct" "$prefs_file_path"
   fi
 }

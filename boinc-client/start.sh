@@ -24,7 +24,6 @@ else
 fi
 
 if [[ -z $SKIP_BOINC_MEM_SETTINGS_CHECK ]]; then
-  echo "Validating boinc RAM settings"
   validate_ram_settings
 fi
 

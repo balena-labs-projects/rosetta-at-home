@@ -11,6 +11,11 @@ treshold_ram_settings_pct=95
 
 cd /usr/app/boinc
 
+if [ "$BALENA_DEVICE_TYPE" = "jetson-nano" ]; then
+  echo 'Jetson Nano detected - enabling fan at 100%'
+  echo 255 > /sys/devices/pwm-fan/target_pwm
+fi
+
 if [[ -z $ACCOUNT_KEY ]]; then
   echo 'Account key undefined - using balena key'
 else

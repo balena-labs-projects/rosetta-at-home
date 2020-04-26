@@ -7,6 +7,6 @@ RUN install_packages boinc-client boinctui xml-twig-tools htop
 COPY *.xml ./boinc/
 COPY gui_rpc_auth.cfg ./boinc/
 
-COPY start.sh ./
+COPY start*.sh ./
 
 CMD ["/bin/bash","/usr/app/start.sh"]

@@ -1,6 +1,6 @@
 get_int_xml_val() {
   local xml_val=$(xml_grep --text_only "$1" "$2")
-  local xml_int_val=$(awk "BEGIN {print 1 * $xml_val}")
+  local xml_int_val=$(awk "BEGIN {print int($xml_val)}")
   echo $xml_int_val
 }
 

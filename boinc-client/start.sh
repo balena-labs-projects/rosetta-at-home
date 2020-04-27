@@ -5,7 +5,7 @@ mkdir -p /usr/app/boinc/slots
 prefs_file_path='global_prefs_override.xml'
 cfg_ram_max_busy_xml_key='ram_max_used_busy_pct'
 cfg_ram_max_idle_xml_key='ram_max_used_idle_pct'
-treshold_ram_settings_pct=95
+threshold_ram_settings_pct=95
 
 . start-utils.sh
 
@@ -29,7 +29,7 @@ fi
 
 totalmem=$(awk '/^MemTotal:/{print $2}' /proc/meminfo)
 
-if [[ -z $SKIP_BOINC_CPU_SETTINGS_CHECK && "$totalmem" -lt "1500000" ]]; then
+if [[ -z $SKIP_BOINC_CPU_SETTINGS_CHECK && "$totalmem" -lt "2500000" ]]; then
   echo "Less than 1.5GB RAM - running single concurrent task"
   update_float_xml_val_with_int max_ncpus_pct 25 "$prefs_file_path"
 fi

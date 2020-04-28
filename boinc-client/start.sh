@@ -30,7 +30,7 @@ fi
 totalmem=$(awk '/^MemTotal:/{print $2}' /proc/meminfo)
 
 if [[ -z $SKIP_BOINC_CPU_SETTINGS_CHECK && "$totalmem" -lt "2500000" ]]; then
-  echo "Less than 1.5GB RAM - running single concurrent task"
+  echo "Less than 2.5GB RAM - running single concurrent task"
   update_float_xml_val_with_int max_ncpus_pct 25 "$prefs_file_path"
 fi
 

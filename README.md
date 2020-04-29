@@ -16,7 +16,13 @@ This project should run on 64-bit OS devices with 1 or more GB of RAM, but we've
 
 ## Getting started
 
-This is a containerized application intended to run on [balenaCloud](https://www.balena.io/cloud/), which allows you to deploy it to an entire fleet of devices with a single command. BalenaCloud covers 10 devices for free, but if you want to run this application on a larger fleet please [get in touch](mailto:hello@balena.io).
+This is a containerized application intended to run on [balenaCloud](https://www.balena.io/cloud/), which allows you to deploy it to an entire fleet of devices and get as many of them folding as quickly as possible for the least effort. BalenaCloud covers 10 devices for free, but if you want to run this application on a larger fleet please [get in touch](mailto:hello@balena.io).
+
+One-click deploy to balenaCloud:
+
+[![](https://balena.io/deploy.png)](https://dashboard.balena-cloud.com/deploy)
+
+**or**
 
 ### Setup the device(s)
 

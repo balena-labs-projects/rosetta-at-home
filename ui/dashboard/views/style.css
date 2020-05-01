@@ -2,7 +2,7 @@ body {
   height: 100vh;
   margin: 0;
   color: white;
-  font-family: monospace;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
 nav {
@@ -23,16 +23,25 @@ button {
   box-sizing: border-box;
   cursor: pointer;
   text-transform: none;
-  color: rgb(248, 248, 248);
+  color: rgb(255, 255, 255);
   outline: none;
   text-decoration: none;
   margin: 0px;
   overflow: visible;
   border-width: 1px;
   border-style: solid;
-  border-color: rgb(82, 118, 153);
+  border-color: rgb(99, 186, 151);
   border-image: initial;
-  padding: 4px 20px;
-  background: rgb(82, 118, 153);
-  border-radius: 20px;
+  padding: 8px 30px;
+  background: rgb(99, 186, 151);
+  font-size: 0.8em;
+}
+
+button:hover {
+  box-shadow: rgb(99, 186, 151) 0px 0px 0px 2px;
+}
+
+.logo {
+  height: 20px;
+  display: block;
 }

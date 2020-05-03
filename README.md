@@ -1,3 +1,5 @@
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/balenalabs/rosetta-at-home) 
+
 # Fold for Covid - help in the fight against COVID-19 with Rosetta@home
 
 With the recent COVID-19 outbreak, R@h has been used to predict the structure of proteins important to the disease as well as to produce new, stable mini-proteins to be used as potential therapeutics and diagnostics, like the one displayed above which is bound to part of the COVID-19 spike protein. [Read more](http://boinc.bakerlab.org/rosetta/)

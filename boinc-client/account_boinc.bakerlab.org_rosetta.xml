@@ -1,5 +1,5 @@
 <account>
-    <master_url>http://boinc.bakerlab.org/rosetta/</master_url>
+    <master_url>https://boinc.bakerlab.org/rosetta/</master_url>
     <authenticator>2085224_4b01976e2d7527db54825c9f27acad26</authenticator>
     <project_name>Rosetta@home</project_name>
 </account>

@@ -4,7 +4,18 @@ const app = express();
 const bodyParser = require("body-parser");
 const port = 80;
 const SdkInstanceFactory = require("balena-sdk");
+const fs = require("fs");
+const ROSETTA_XML_PATH =
+  "/usr/app/stats/sched_request_boinc.bakerlab.org_rosetta.xml";
 let sdk;
+let hostId;
+
+try {
+  const data = fs.readFileSync(ROSETTA_XML_PATH, "utf8");
+  hostId = data.split("\n")[2].match("<hostid>(.*)</hostid>")[1];
+} catch (err) {
+  console.error("Could not read xml file", err);
+}
 
 // Enable HTML template middleware
 app.use(express.static(__dirname));
@@ -51,6 +62,7 @@ app.post("/manage/reboot", async (req, res) => {
 app.get("/", (req, res) =>
   res.render("index.ejs", {
     deviceName: process.env.BALENA_DEVICE_NAME_AT_INIT || "balena",
+    hostId: hostId,
   })
 );
 

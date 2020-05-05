@@ -2,15 +2,16 @@ body {
   height: 100vh;
   margin: 0;
   color: white;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
 nav {
   height: 10%;
   background-color: rgb(51, 51, 51);
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center; */
 }
 form {
   display: flex;
@@ -44,4 +45,16 @@ button:hover {
 .logo {
   height: 20px;
   display: block;
+}
+
+.info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.links a {
+  padding-right: 25px;
+  color: white;
+  text-decoration: none;
 }

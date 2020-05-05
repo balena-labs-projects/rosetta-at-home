@@ -10,9 +10,17 @@
 
 <body>
   <nav>
-    <img src="views/logo-on-dark.svg" alt="Balena logo" class="logo"/>
-    <br/><br/>
-    <form method="post">
+    <section class="info">
+      <img src="views/logo-on-dark.svg" alt="Balena logo" class="logo" />
+      <div class="links">
+        <a href="https://foldforcovid.io/" target="_blank">Visit foldforcovid.io</a>
+        <a href="https://www.boincstats.com/stats/-1/team/detail/8ecbdda89d8db23cb750b3ba67985537" target="_blank">View
+          Rosetta team stats</a>
+        <a href="https://boinc.bakerlab.org/rosetta/show_host_detail.php?hostid=<%= hostId %>" target="_blank">View
+          device stats</a>
+      </div>
+    </section>
+    <form method="post" class="buttons">
       <button type="submit" formaction="/manage/shutdown">
         Shutdown
       </button>
@@ -20,12 +28,11 @@
         Reboot
       </button>
       <div class="envvar">
-        <label>ACCOUNT_KEY<label>
-            <details>
-              <summary>Change Account Key</summary>
-              <input type="text" name="accountKey" />
-              <button type="submit" formaction="/manage/setkey">Apply</button>
-            </details>
+        <details>
+          <summary>Change Account Key</summary>
+          <input type="text" name="accountKey" />
+          <button type="submit" formaction="/manage/setkey">Apply</button>
+        </details>
       </div>
     </form>
   </nav>

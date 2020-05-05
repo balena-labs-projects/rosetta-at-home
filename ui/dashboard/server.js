@@ -38,12 +38,12 @@ app.post("/manage/setkey", async (req, res) => {
 		"ACCOUNT_KEY",
 		req.body.accountKey
 	);
-	res.status(200);
+	res.sendStatus(200);
 });
 
 // Shutdown handler
 app.post("/manage/shutdown", async (req, res) => {
-	res.send(200);
+	res.sendStatus(200);
 	await axios.post(
 		`${process.env.BALENA_SUPERVISOR_ADDRESS}/v1/shutdown?apikey=${process.env.BALENA_SUPERVISOR_API_KEY}`,
 		{}

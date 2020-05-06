@@ -22,6 +22,7 @@ app.use(express.static(__dirname));
 app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // Set Account Key handler
 app.post("/manage/setkey", async (req, res) => {

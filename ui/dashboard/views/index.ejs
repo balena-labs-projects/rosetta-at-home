@@ -149,6 +149,7 @@
 						event.preventDefault();
 						fetch("/manage/setkey", {
 							method: "post",
+							headers: { "Content-Type": "application/json" },
 							body: JSON.stringify({
 								accountKey: event.target.accountKey.value,
 							}),

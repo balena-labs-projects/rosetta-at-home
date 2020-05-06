@@ -18,6 +18,7 @@ fi
 
 if [[ -z $ACCOUNT_KEY ]]; then
   echo 'Account key undefined - using balena key'
+  sed -i -e 's|<authenticator>[0-9a-z_]\{1,\}</authenticator>|<authenticator>2085224_4b01976e2d7527db54825c9f27acad26</authenticator>|g' account_boinc.bakerlab.org_rosetta.xml
 else
   echo 'Account key set'
   sed -i -e 's|<authenticator>[0-9a-z_]\{1,\}</authenticator>|<authenticator>'"$ACCOUNT_KEY"'</authenticator>|g' account_boinc.bakerlab.org_rosetta.xml

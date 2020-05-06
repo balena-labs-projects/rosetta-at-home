@@ -4,15 +4,14 @@ body {
 	color: white;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
 		Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	display: flex;
+	flex-direction: column;
 }
 
 nav {
 	height: 100px;
 	background-color: #333;
 	padding: 16px 0px;
-	/* display: flex;
-  flex-direction: column;
-  justify-content: center; */
 }
 form {
 	display: flex;

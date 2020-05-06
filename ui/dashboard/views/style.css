@@ -20,7 +20,7 @@ form {
 	align-items: center;
 	padding: 10px;
 }
-button {
+button.primary {
 	box-sizing: border-box;
 	cursor: pointer;
 	text-transform: none;
@@ -38,8 +38,33 @@ button {
 	font-size: 0.8em;
 }
 
-button:hover {
+button.primary:hover {
 	box-shadow: rgb(99, 186, 151) 0px 0px 0px 2px;
+}
+
+button.default {
+	color: #333;
+	border-color: rgb(99, 186, 151);
+	background: #fff;
+	font-size: 0.8em;
+}
+
+button.default:hover {
+	box-shadow: rgb(99, 186, 151) 0px 0px 0px 2px;
+}
+
+.close-modal {
+	font-size: 25px;
+	font-weight: 700;
+	background: transparent;
+	line-height: 1;
+	cursor: pointer;
+	color: #fff;
+	text-shadow: 0px 1px 0 #fff;
+	position: absolute;
+	border: none;
+	top: -30px;
+	right: -30px;
 }
 
 .logo {
@@ -133,7 +158,7 @@ button:hover {
 	color: #000;
 }
 
-.modal button {
+.modal form button {
 	width: 100%;
 }
 

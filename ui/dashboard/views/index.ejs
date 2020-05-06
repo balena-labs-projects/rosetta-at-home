@@ -36,14 +36,24 @@
 				</div>
 			</section>
 			<form method="post" class="buttons">
-				<button id="shutdown" type="button" formaction="/manage/shutdown">
+				<button
+					class="primary"
+					id="shutdown"
+					type="button"
+					formaction="/manage/shutdown"
+				>
 					Shutdown
 				</button>
-				<button id="reboot" type="button" formaction="/manage/reboot">
+				<button
+					class="primary"
+					id="reboot"
+					type="button"
+					formaction="/manage/reboot"
+				>
 					Reboot
 				</button>
 				<div class="envvar">
-					<button type="button" id="account_key">
+					<button class="primary" type="button" id="account_key">
 						Change Account Key
 					</button>
 				</div>
@@ -82,15 +92,40 @@
 		<div id="account_key_modal">
 			<div class="overlay"></div>
 			<div class="modal">
+				<button
+					class="close-modal"
+					type="button"
+					id="account_key_close_modal"
+					aria-label="close"
+				>
+					<span aria-hidden="true">×</span>
+				</button>
+				<h3>Change Account Key</h3>
+				<hr />
 				<form id="account_key_form">
 					<div class="form-control">
 						<label for="accountKey">
 							Account Key
 						</label>
-						<input type="text" name="accountKey" palceholder="Account key" />
+						<input
+							type="text"
+							required
+							id="accountKey"
+							name="accountKey"
+							value="<%= accountKey %>"
+							placeholder="Account key"
+						/>
 					</div>
-					<div class="form-control">
-						<button type="submit" id="account_key_submit">
+					<div class="form-control" style="flex-direction: row;">
+						<button
+							type="button"
+							class="default"
+							style="margin-right: 16px;"
+							id="account_key_reset"
+						>
+							Reset
+						</button>
+						<button class="primary" type="submit" id="account_key_submit">
 							Apply
 						</button>
 					</div>
@@ -125,6 +160,12 @@
 					var shutdownButton = document.getElementById("shutdown");
 					var rebootButton = document.getElementById("reboot");
 					var accountKeyButton = document.getElementById("account_key");
+					var accountKeyResetButton = document.getElementById(
+						"account_key_reset"
+					);
+					var accountKeyCloseButton = document.getElementById(
+						"account_key_close_modal"
+					);
 					var accountKeyForm = document.getElementById("account_key_form");
 
 					shutdownButton.onclick = function (event) {
@@ -143,6 +184,20 @@
 
 					accountKeyButton.onclick = function (event) {
 						accountKeyModal.style.display = "block";
+					};
+
+					accountKeyCloseButton.onclick = function (event) {
+						accountKeyModal.style.display = "none";
+					};
+
+					accountKeyResetButton.onclick = function (event) {
+						fetch("/manage/setkey", {
+							method: "post",
+							headers: { "Content-Type": "application/json" },
+							body: JSON.stringify({ accountKey: null }),
+						});
+						accountKeyModal.style.display = "none";
+						document.getElementById("accountKey").value = "";
 					};
 
 					accountKeyForm.onsubmit = function (event) {

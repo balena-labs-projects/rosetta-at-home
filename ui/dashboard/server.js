@@ -10,7 +10,6 @@ const ROSETTA_XML_PATH =
 let sdk;
 let hostId;
 
-
 // Enable HTML template middleware
 app.use(express.static(__dirname));
 app.set("view engine", "ejs");
@@ -27,12 +26,21 @@ app.post("/manage/setkey", async (req, res) => {
 			$filter: { service_name: "boinc-client" },
 		}
 	);
-	await sdk.models.device.serviceVar.set(
-		process.env.BALENA_DEVICE_UUID,
-		serviceId,
-		"ACCOUNT_KEY",
-		req.body.accountKey
-	);
+	const { accountKey } = req.body;
+	if (!accountKey || !(accountKey && accountKey.trim())) {
+		await sdk.models.device.serviceVar.remove(
+			process.env.BALENA_DEVICE_UUID,
+			serviceId,
+			"ACCOUNT_KEY"
+		);
+	} else {
+		await sdk.models.device.serviceVar.set(
+			process.env.BALENA_DEVICE_UUID,
+			serviceId,
+			"ACCOUNT_KEY",
+			req.body.accountKey
+		);
+	}
 	res.sendStatus(200);
 });
 
@@ -54,22 +62,41 @@ app.post("/manage/reboot", async (req, res) => {
 	);
 });
 
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
+	let accountKey = "";
+	try {
+		const [{ id: serviceId }] = await sdk.models.service.getAllByApplication(
+			Number(process.env.BALENA_APP_ID),
+			{
+				$select: "id",
+				$filter: { service_name: "boinc-client" },
+			}
+		);
+		accountKey = await sdk.models.device.serviceVar.get(
+			process.env.BALENA_DEVICE_UUID,
+			serviceId,
+			"ACCOUNT_KEY"
+		);
+	} catch (error) {
+		console.log("error", error);
+	}
+
 	try {
 		const data = fs.readFileSync(ROSETTA_XML_PATH, "utf8");
 		hostId = data.split("\n")[2].match("<hostid>(.*)</hostid>")[1];
 	} catch (err) {
 		console.error("Could not read xml file", err);
 	}
+
 	res.render("index.ejs", {
 		deviceName: process.env.BALENA_DEVICE_NAME_AT_INIT || "balena",
 		hostId: hostId,
-	})
+		accountKey: accountKey,
+	});
 });
 
 app.listen(port, () => {
 	sdk = SdkInstanceFactory();
 	sdk.auth.logout();
 	sdk.auth.loginWithToken(process.env.BALENA_API_KEY);
-	console.log(`Dashboard app listening at http://localhost:${port}`);
 });

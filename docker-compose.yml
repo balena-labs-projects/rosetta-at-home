@@ -1,10 +1,16 @@
-version: '2'
+version: '2.1'
 volumes:
   boinc:
 services:
   boinc-client:
     build: ./boinc-client
     restart: always
+    # cpu share weight when cpu is busy
+    # 1024 is default for each process
+    cpu_shares: 256
+    blkio_config:
+      # weight 10-1000, default 500
+      weight: 128
     ports:
       - 31416:31416
     volumes:
@@ -16,6 +22,13 @@ services:
     privileged: true
     ports:
       - 80:80
+    mem_reservation: 16m
+    healthcheck:
+      test: curl -sf -o /dev/null http://127.0.0.1 || exit 1
+      interval: 1m
+      timeout: 10s
+      retries: 1
+
   power-management:
     build: ./power-management
     restart: on-failure

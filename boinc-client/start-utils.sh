@@ -24,3 +24,34 @@ validate_ram_settings() {
     update_float_xml_val_with_int "$cfg_ram_max_idle_xml_key" "$threshold_ram_settings_pct" "$prefs_file_path"
   fi
 }
+
+check_account_key() {
+  echo "Checking account key"
+
+  # we check to make sure the account key in account_boinc.bakerlab.org_rosetta is set correctly
+  # if the desired account key is different to the one we currently have, we remove all existing XML config and change it
+  local current_key=$(xml_grep --text_only "authenticator" "$account_file_path" | awk "NR==1{print $1}")
+
+  if [[ -z $ACCOUNT_KEY ]]; then
+    echo 'User account key undefined - using Fold for Covid key'
+    local new_key="$f4c_account_key"
+  else
+    echo 'User account key set'
+    local new_key="$ACCOUNT_KEY"
+  fi
+
+  # is the key changing?
+  if [[ ! "$current_key" = "$new_key" ]]; then
+    echo 'Account key change detected - purging'
+    rm -rf /usr/app/boinc/*
+
+    # set the new key with a fresh version of template file
+    cp "$account_template_file_path" "$account_file_path"
+    sed -i -e 's|<authenticator>[0-9a-z_]\{1,\}</authenticator>|<authenticator>'"$new_key"'</authenticator>|g' "$account_file_path"
+
+    # restore other xml files
+    cp "/usr/app/$prefs_file_path" .
+    cp "/usr/app/$cc_config_file" .
+    cp "/usr/app/$rpc_config_file" .
+  fi
+}

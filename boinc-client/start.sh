@@ -2,6 +2,10 @@
 mkdir -p /usr/app/boinc/locale
 mkdir -p /usr/app/boinc/slots
 
+f4c_account_key='2085224_4b01976e2d7527db54825c9f27acad26'
+account_template_file_path='/usr/app/account_boinc.bakerlab.org_rosetta.xml.template'
+account_file_path='account_boinc.bakerlab.org_rosetta.xml'
+cc_config_file='cc_config.xml'
 prefs_file_path='global_prefs_override.xml'
 cfg_ram_max_busy_xml_key='ram_max_used_busy_pct'
 cfg_ram_max_idle_xml_key='ram_max_used_idle_pct'
@@ -11,18 +15,17 @@ threshold_ram_settings_pct=95
 
 cd /usr/app/boinc
 
+if [ ! -f "$account_file_path" ]; then
+    echo "Account file not found - creating from template"
+    cp "$account_template_file_path" "$account_file_path"
+fi
+
 if [ "$BALENA_DEVICE_TYPE" = "jetson-nano" ]; then
   echo 'Jetson Nano detected - enabling fan at 100%'
   echo 255 > /sys/devices/pwm-fan/target_pwm
 fi
 
-if [[ -z $ACCOUNT_KEY ]]; then
-  echo 'Account key undefined - using balena key'
-  sed -i -e 's|<authenticator>[0-9a-z_]\{1,\}</authenticator>|<authenticator>2085224_4b01976e2d7527db54825c9f27acad26</authenticator>|g' account_boinc.bakerlab.org_rosetta.xml
-else
-  echo 'Account key set'
-  sed -i -e 's|<authenticator>[0-9a-z_]\{1,\}</authenticator>|<authenticator>'"$ACCOUNT_KEY"'</authenticator>|g' account_boinc.bakerlab.org_rosetta.xml
-fi
+check_account_key
 
 if [[ -z $SKIP_BOINC_MEM_SETTINGS_CHECK ]]; then
   validate_ram_settings

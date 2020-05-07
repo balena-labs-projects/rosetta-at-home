@@ -43,7 +43,7 @@ check_account_key() {
   # is the key changing?
   if [[ ! "$current_key" = "$new_key" ]]; then
     echo 'Account key change detected - purging'
-    rm *.xml
+    rm -rf /usr/app/boinc/*
 
     # set the new key with a fresh version of template file
     cp "$account_template_file_path" "$account_file_path"

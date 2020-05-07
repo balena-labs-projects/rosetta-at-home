@@ -6,7 +6,7 @@ RUN install_packages boinc-client boinctui xml-twig-tools htop
 
 COPY account_boinc.bakerlab.org_rosetta.xml.template ./
 COPY *.xml ./
-COPY gui_rpc_auth.cfg ./boinc/
+COPY gui_rpc_auth.cfg ./
 
 COPY start*.sh ./
 

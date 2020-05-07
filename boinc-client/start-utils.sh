@@ -52,5 +52,6 @@ check_account_key() {
     # restore other xml files
     cp "/usr/app/$prefs_file_path" .
     cp "/usr/app/$cc_config_file" .
+    cp "/usr/app/$rpc_config_file" .
   fi
 }

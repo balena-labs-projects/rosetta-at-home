@@ -15,6 +15,7 @@
     "express": "^4.17.1",
     "axios": "^0.19.2",
     "balena-sdk": "^13.2.1",
-    "body-parser": "1.19.0"
+    "body-parser": "1.19.0",
+    "http-proxy-middleware": "^1.0.3"
   }
 }

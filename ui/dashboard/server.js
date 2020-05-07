@@ -1,4 +1,5 @@
 const express = require("express");
+const httpProxyMiddleware = require("http-proxy-middleware");
 const axios = require("axios");
 const app = express();
 const bodyParser = require("body-parser");
@@ -16,6 +17,14 @@ app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.use("/boinctui", httpProxyMiddleware.createProxyMiddleware({
+	target: "http://127.0.0.1:8080",
+	changeOrigin: false,
+	ws: true,
+	pathRewrite: {"^/boinctui/": "/"},
+	cookiePathRewrite: {"^/boinctui/": "/"}
+}));
 
 // Set Account Key handler
 app.post("/manage/setkey", async (req, res) => {

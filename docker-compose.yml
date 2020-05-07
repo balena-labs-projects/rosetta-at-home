@@ -20,15 +20,20 @@ services:
     build: ./ui
     restart: always
     privileged: true
+    volumes:
+      - 'boinc:/usr/app/stats'
     ports:
       - 80:80
+      - 8080:8080
+    labels:
+      io.balena.features.balena-api: '1'
+      io.balena.features.supervisor-api: '1'
     mem_reservation: 16m
     healthcheck:
       test: curl -sf -o /dev/null http://127.0.0.1 || exit 1
       interval: 1m
       timeout: 10s
       retries: 1
-
   power-management:
     build: ./power-management
     restart: on-failure

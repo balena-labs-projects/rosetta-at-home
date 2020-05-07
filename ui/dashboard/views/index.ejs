@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>Fold for Covid @ <%= deviceName %></title>
+		<link rel="stylesheet" href="views/style.css" />
+	</head>
+
+	<body>
+		<nav>
+			<section class="info">
+				<img src="views/logo-on-dark.svg" alt="Balena logo" class="logo" />
+				<div class="links">
+					<a href="https://foldforcovid.io/" target="_blank"
+						>Visit foldforcovid.io</a
+					>
+					<a
+						href="https://www.boincstats.com/stats/-1/team/detail/8ecbdda89d8db23cb750b3ba67985537"
+						target="_blank"
+						>View Rosetta team stats</a
+					>
+					<a
+						href="https://boinc.bakerlab.org/rosetta/show_host_detail.php?hostid=<%= hostId %>"
+						target="_blank"
+						>View device stats</a
+					>
+					<a href="https://forums.balena.io/c/fold-for-covid" target="_blank"
+						>Community</a
+					>
+					<a
+						href="https://github.com/balenalabs/rosetta-at-home"
+						target="_blank"
+						>Github</a
+					>
+				</div>
+			</section>
+			<form method="post" class="buttons">
+				<button
+					class="primary"
+					id="shutdown"
+					type="button"
+					formaction="/manage/shutdown"
+				>
+					Shutdown
+				</button>
+				<button
+					class="primary"
+					id="reboot"
+					type="button"
+					formaction="/manage/reboot"
+				>
+					Reboot
+				</button>
+				<div class="envvar">
+					<button class="primary" type="button" id="account_key">
+						Change Account Key
+					</button>
+				</div>
+			</form>
+			<div class="subheader">
+				<div>
+					Leave your device online, add as many devices as you can, and tell
+					everyone you know!
+				</div>
+				<div class="social-icons">
+					<a
+						target="_blank"
+						href="https://www.facebook.com/sharer.php?s=100&p[url]=https%3A%2F%2Ffoldforcovid.io"
+						><img src="views/facebook.svg"
+					/></a>
+					<a
+						target="_blank"
+						href="https://twitter.com/share?url=https%3A%2F%2Ffoldforcovid.io&text=I%E2%80%99m%20fighting%20%23coronavirus%20using%20my%20Raspberry%20Pi%20or%20old%20laptop%2C%20visit%20foldforcovid.io%20to%20set%20up%20your%20own%20and%20join%20the%20fight!%20%23foldforcovid%20%40RosettaAtHome%20%40balena_io"
+						><img src="views/twitter.svg"
+					/></a>
+					<a
+						target="_blank"
+						href="https://www.linkedin.com/shareArticle/?url=https%3A%2F%2Ffoldforcovid.io&mini=true"
+						><img src="views/linkedin.svg"
+					/></a>
+				</div>
+			</div>
+		</nav>
+		<iframe
+			id="tty"
+			width="100%"
+			style="flex-grow: 1;"
+			frameborder="0"
+			onload="if(document.getElementById('tty').src == '') { document.getElementById('tty').src = window.location.protocol + '//' + window.location.hostname + ':8080/'; }"
+		></iframe>
+		<div id="account_key_modal">
+			<div class="overlay"></div>
+			<div class="modal">
+				<button
+					class="close-modal"
+					type="button"
+					id="account_key_close_modal"
+					aria-label="close"
+				>
+					<span aria-hidden="true">×</span>
+				</button>
+				<h3>Change Account Key</h3>
+				<hr />
+				<form id="account_key_form">
+					<div class="form-control">
+						<label for="accountKey">
+							Account Key
+						</label>
+						<input
+							type="text"
+							required
+							id="accountKey"
+							name="accountKey"
+							value="<%= accountKey %>"
+							placeholder="Account key"
+						/>
+					</div>
+					<div class="form-control" style="flex-direction: row;">
+						<button
+							type="button"
+							class="default"
+							style="margin-right: 16px;"
+							id="account_key_reset"
+						>
+							Reset
+						</button>
+						<button class="primary" type="submit" id="account_key_submit">
+							Apply
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div id="shutdown_loader">
+			<div class="overlay">
+				<div class="spinner">
+					<div class="dot1"></div>
+					<div class="dot2"></div>
+				</div>
+				<span class="loader-title">Device is powering off</span>
+			</div>
+		</div>
+		<div id="reboot_loader">
+			<div class="overlay">
+				<div class="spinner">
+					<div class="dot1"></div>
+					<div class="dot2"></div>
+				</div>
+				<span class="loader-title">Device is rebooting</span>
+			</div>
+		</div>
+
+		<script>
+			(function () {
+				window.onload = function () {
+					var accountKeyModal = document.getElementById("account_key_modal");
+					var rebootLoader = document.getElementById("reboot_loader");
+					var shutdownLoader = document.getElementById("shutdown_loader");
+					var shutdownButton = document.getElementById("shutdown");
+					var rebootButton = document.getElementById("reboot");
+					var accountKeyButton = document.getElementById("account_key");
+					var accountKeyResetButton = document.getElementById(
+						"account_key_reset"
+					);
+					var accountKeyCloseButton = document.getElementById(
+						"account_key_close_modal"
+					);
+					var accountKeyForm = document.getElementById("account_key_form");
+
+					shutdownButton.onclick = function (event) {
+						fetch("/manage/shutdown", { method: "post" });
+						shutdownLoader.style.display = "block";
+					};
+
+					rebootButton.onclick = function (event) {
+						fetch("/manage/reboot", { method: "post" });
+						rebootLoader.style.display = "block";
+
+						window.setTimeout(function () {
+							rebootLoader.style.display = "none";
+						}, 1000 * 60);
+					};
+
+					accountKeyButton.onclick = function (event) {
+						accountKeyModal.style.display = "block";
+					};
+
+					accountKeyCloseButton.onclick = function (event) {
+						accountKeyModal.style.display = "none";
+					};
+
+					accountKeyResetButton.onclick = function (event) {
+						fetch("/manage/setkey", {
+							method: "post",
+							headers: { "Content-Type": "application/json" },
+							body: JSON.stringify({ accountKey: null }),
+						});
+						accountKeyModal.style.display = "none";
+						document.getElementById("accountKey").value = "";
+					};
+
+					accountKeyForm.onsubmit = function (event) {
+						event.preventDefault();
+						fetch("/manage/setkey", {
+							method: "post",
+							headers: { "Content-Type": "application/json" },
+							body: JSON.stringify({
+								accountKey: event.target.accountKey.value,
+							}),
+						});
+						accountKeyModal.style.display = "none";
+					};
+				};
+			})();
+		</script>
+	</body>
+</html>

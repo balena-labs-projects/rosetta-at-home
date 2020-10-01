@@ -20,7 +20,7 @@ This is a containerized application intended to run on [balenaCloud](https://www
 
 One-click deploy to balenaCloud:
 
-[![](https://balena.io/deploy.png)](https://dashboard.balena-cloud.com/deploy)
+[![balena deploy button](https://balena.io/deploy.png)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/balenalabs/rosetta-at-home)
 
 **or**
 

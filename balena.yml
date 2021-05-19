@@ -1,13 +1,18 @@
 name: rosetta-at-home
 type: sw.application
 description: >-
-  Fold for Covid - Help fight the COVID-19 pandemic with your old laptop, Raspberry Pi, or other spare computer
+  Fold for Covid - Help fight the COVID-19 pandemic with your old laptop,
+  Raspberry Pi, or other spare computer
 post-provisioning: >-
   ## Usage instructions
 
-  Once your device joins the fleet you'll need to allow some time for it to download the application. To view your device's current activity, visit it’s new hostname, "foldforcovid.local", in a web browser like this: foldforcovid.local
+  Once your device joins the fleet you'll need to allow some time for it to
+  download the application. To view your device's current activity, visit it’s
+  new hostname, "foldforcovid.local", in a web browser like this:
+  foldforcovid.local
 
-  If you have a display connected to your device, the statistics and current information will be shown there too.
+  If you have a display connected to your device, the statistics and current
+  information will be shown there too.
 assets:
   repository:
     type: blob.asset
@@ -23,6 +28,6 @@ data:
   supportedDeviceTypes:
     - raspberrypi3
     - raspberrypi4-64
-    - jetson-nano	
+    - jetson-nano
     - intel-nuc
-version: 0.6.4
+version: 0.6.5

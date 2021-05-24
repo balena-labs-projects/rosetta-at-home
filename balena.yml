@@ -24,7 +24,7 @@ assets:
       url: >-
         https://raw.githubusercontent.com/balenalabs/rosetta-at-home/master/logo.png
 data:
-  defaultDeviceType: raspberry-pi3
+  defaultDeviceType: raspberrypi3
   supportedDeviceTypes:
     - raspberrypi3
     - raspberrypi4-64

@@ -7,7 +7,7 @@ post-provisioning: >-
   ## Usage instructions
 
   Once your device joins the fleet you'll need to allow some time for it to
-  download the application. To view your device's current activity, visit it’s
+  download the app. To view your device's current activity, visit it’s
   new hostname, "foldforcovid.local", in a web browser like this:
   foldforcovid.local
 

@@ -7,9 +7,8 @@ post-provisioning: >-
   ## Usage instructions
 
   Once your device joins the fleet you'll need to allow some time for it to
-  download the app. To view your device's current activity, visit it’s
-  new hostname, "foldforcovid.local", in a web browser like this:
-  foldforcovid.local
+  download the app. To view your device's current activity, visit it’s new
+  hostname, "foldforcovid.local", in a web browser like this: foldforcovid.local
 
   If you have a display connected to your device, the statistics and current
   information will be shown there too.
@@ -30,4 +29,4 @@ data:
     - raspberrypi4-64
     - jetson-nano
     - intel-nuc
-version: 0.6.6
+version: 0.6.7

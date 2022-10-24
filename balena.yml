@@ -16,12 +16,12 @@ assets:
   repository:
     type: blob.asset
     data:
-      url: 'https://github.com/balenalabs/rosetta-at-home'
+      url: 'https://github.com/balena-labs-projects/rosetta-at-home'
   logo:
     type: blob.asset
     data:
       url: >-
-        https://raw.githubusercontent.com/balenalabs/rosetta-at-home/master/logo.png
+        https://raw.githubusercontent.com/balena-labs-projects/rosetta-at-home/master/logo.png
 data:
   defaultDeviceType: raspberrypi3
   supportedDeviceTypes:

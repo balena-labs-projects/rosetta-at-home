@@ -20,7 +20,7 @@ This is a containerized app intended to run on [balenaCloud](https://www.balena.
 
 One-click deploy to balenaCloud:
 
-[![balena deploy button](https://balena.io/deploy.png)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/balenalabs/rosetta-at-home)
+[![balena deploy button](https://balena.io/deploy.png)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/balena-labs-projects/rosetta-at-home)
 
 **or**
 
@@ -45,7 +45,7 @@ For further information, see the [balenaCloud documentation](https://www.balena.
 
 This app has a built in web interface that allows you to see statistics and more. Simply visit the local IP address of your device or [enable the public URL for your device](https://www.balena.io/docs/learn/manage/actions/#enable-public-device-url) in the balenaCloud dashboard and you'll be able to access statistics from anywhere!
 
-![web-ui](https://raw.githubusercontent.com/balenalabs/rosetta-at-home/master/images/web-ui.png)
+![web-ui](https://raw.githubusercontent.com/balena-labs-projects/rosetta-at-home/master/images/web-ui.png)
 
 The web interface uses [GoTTY](https://github.com/yudai/gotty) to provide access to `boinctui` via a standard web browser.
 
